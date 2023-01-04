@@ -1,5 +1,11 @@
 **Fedora Custom**
 ===================================
+**Motion Sense**
+adb shell device_config put device_personalization_services AdaptiveAudio__enable_adaptive_audio true 
+adb shell device_config put device_personalization_services AdaptiveAudio__show_promo_notification true
+adb shell device_config put oslo mcc_whitelist vn
+adb shell device_config set_sync_disabled_for_tests persistent
+
 
 **1. Fedora DNF Tweaks** 
 ```sh
