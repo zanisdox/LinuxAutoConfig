@@ -1,3 +1,18 @@
+**Python BS4**
+```python
+from urllib.request import Request, urlopen
+from bs4 import BeautifulSoup
+import requests
+
+site = ""
+hdr = {'User-Agent': 'Mozilla/5.0'}
+req = Request(site, headers=hdr)
+page = urlopen(req)
+soup = BeautifulSoup(page)
+object = soup.findAll("a", {'class': "some-class"})
+```
+
+
 **ADB and Fastboot**
 ```sh
 sudo update-alternatives --install "/usr/bin/....." "....." "PATH/TO/PACKAGE" 1
