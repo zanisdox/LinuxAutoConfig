@@ -15,4 +15,5 @@ echo 'source ~/.zsh-custom/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ~/.zs
 echo 'source ~/.zsh-custom/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
 echo 'source ~/.zsh-custom/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 
+rm -rf MesloLGS_NF
 rm zsh.sh
