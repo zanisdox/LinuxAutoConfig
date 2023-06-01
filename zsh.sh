@@ -1,3 +1,4 @@
+#!/bin/sh
 rm -rf MesloLGS_NF
 mkdir MesloLGS_NF
 wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -O MesloLGS_NF/MesloLGS_NF_Regular.ttf
