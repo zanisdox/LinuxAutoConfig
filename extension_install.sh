@@ -36,8 +36,8 @@ make install
 cd 
 rm -rf netspeedsimplified
 
-sudo dnf -y install sassc gettext
 echo "Dash to Dock"
+sudo dnf -y install sassc gettext
 git clone "https://github.com/micheleg/dash-to-dock.git"
 cd dash-to-dock
 make

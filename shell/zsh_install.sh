@@ -1,28 +1,36 @@
 #!/bin/sh
+# Working in Root
+
+# Get Username
+userdir=$(pwd)
+username=${userdir#"/home/"}
 
 # OhMyZSH
-sudo dnf install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+command='sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
+runuser -l  $username -c $command
+    
 
 # Extension Install
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.ohmyzshExtensions/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.ohmyzshExtensions/zsh-syntax-highlighting
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.ohmyzshExtensions/powerlevel10k
-echo 'source ~/.ohmyzshExtensions/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ~/.zshrc
-echo 'source ~/.ohmyzshExtensions/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
-echo 'source ~/.ohmyzshExtensions/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+git clone https://github.com/zsh-users/zsh-autosuggestions $userdir/.ohmyzshExtensions/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting $userdir/.ohmyzshExtensions/zsh-syntax-highlighting
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $userdir/.ohmyzshExtensions/powerlevel10k
+chmod -R 555 $userdir/.ohmyzshExtensions
+echo 'source $userdir/.ohmyzshExtensions/zsh-autosuggestions/zsh-autosuggestions.zsh' >> $userdir/.zshrc
+echo 'source $userdir/.ohmyzshExtensions/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> $userdir/.zshrc
+echo 'source $userdir/.ohmyzshExtensions/powerlevel10k/powerlevel10k.zsh-theme' >>$userdir/.zshrc
 
 # Fonts Downloads
-fonts = '/usr/share/fonts'
-mkdir tempFonts
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip -P tempFonts
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/DejaVuSansMono.zip -P tempFonts
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/ComicShannsMono.zip -P tempFonts
-sudo unzip tempFonts/Hack.zip -d $fonts/Hack
-sudo unzip tempFonts/DejaVuSansMono.zip -d $fonts/DejaVuSansMono
-sudo unzip tempFonts/ComicShannsMono.zip -d $fonts/ComicShannsMono
-rm -rf tempFonts
-sudo fc-cache -v
+fontdir='/usr/share/fonts'
+mkdir $userdir/tempFonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip -P $userdir/tempFonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/DejaVuSansMono.zip -P $userdir/tempFonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/ComicShannsMono.zip -P $userdir/tempFonts
+unzip $userdir/tempFonts/Hack.zip -d $fontdir/Hack
+unzip $userdir/tempFonts/DejaVuSansMono.zip -d $fontdir/DejaVuSansMono
+unzip $userdir/tempFonts/ComicShannsMono.zip -d $fontdir/ComicShannsMono
+rm -rf $userdir/tempFonts
+fc-cache -v
 
 # Change User Shell
 chsh -s $(which zsh)
+
