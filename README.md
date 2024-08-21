@@ -1,4 +1,4 @@
-**DNF Tweaks** 
+**DNF "maybe" good tweaks** 
 ```sh
 echo 'fastestmirror=True' | sudo tee -a /etc/dnf/dnf.conf
 echo 'max_parallel_downloads=10' | sudo tee -a /etc/dnf/dnf.conf
@@ -7,7 +7,7 @@ echo 'max_parallel_downloads=10' | sudo tee -a /etc/dnf/dnf.conf
 **Xorg Session**
 - add 'DefaultSession=gnome-xorg.desktop'
 - uncomment '#WaylandEnable=false'
-to custom.conf
+in custom.conf
 ```sh
 sudo nano /etc/gdm/custom.conf
 ```
