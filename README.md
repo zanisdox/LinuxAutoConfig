@@ -1,3 +1,6 @@
+** Only using on RPMs **
+
+
 **DNF "maybe" good tweaks** 
 ```sh
 echo 'fastestmirror=True' | sudo tee -a /etc/dnf/dnf.conf
